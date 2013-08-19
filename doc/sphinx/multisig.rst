@@ -78,11 +78,11 @@ Sign an input using::
 Our example will use bash substitution again.
 ::
 
-    $ sx rawscript zero [ $(cat key2 | sx sign-input txfile.tx 0 $(cat msig.script)) ] [ $(cat key3 | sx sign-input txfile.tx 0 $(cat msig.script)) ] [ $(cat msig.script) ] | sx set-input txfile.tx 0 > txfile.tx
+    $ sx rawscript zero [ $(cat key2 | sx sign-input txfile.tx 0 $(cat msig.script)) ] [ $(cat key3 | sx sign-input txfile.tx 0 $(cat msig.script)) ] [ $(cat msig.script) ] | sx set-input txfile.tx 0 > signed-tx
 
 The transaction is finalised! Broadcast it::
 
-    $ sx broadcast-tx txfile.tx
+    $ sx broadcast-tx signed-tx
 
 https://blockchain.info/tx/d646f82bd5fbdb94a36872ce460f97662b80c3050ad3209bef9d1e398ea277ab
 
