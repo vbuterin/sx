@@ -17,7 +17,7 @@ bool read_public_or_private_key(elliptic_curve_key& key)
     return false;
 }
 
-int main()
+int main(int argc, char** argv)
 {
     elliptic_curve_key key;
     if (!read_public_or_private_key(key))
@@ -28,7 +28,13 @@ int main()
         std::cerr << "Set public key on address failed." << std::endl;
         return -1;
     }
-    std::cout << address.encoded() << std::endl;
+    if (argc == 2) {
+        uint8_t version_byte = atoi(argv[1]);
+        std::cout << address.encoded(version_byte) << std::endl;
+    }
+    else {
+        std::cout << address.encoded() << std::endl;
+    }
     return 0;
 }
 
